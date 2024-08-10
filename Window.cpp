@@ -32,7 +32,7 @@ int Window::Initialise()
 {
 	if (!glfwInit())
 	{
-		printf("GLFW initialization failed!");
+		printf("Error Initialising GLFW");
 		glfwTerminate();
 		return 1;
 	}
@@ -45,7 +45,7 @@ int Window::Initialise()
 	mainWindow = glfwCreateWindow(width, height, "Test Window", NULL, NULL);
 	if (!mainWindow)
 	{
-		printf("GLFW window creation failed!");
+		printf("Error creating GLFW window!");
 		glfwTerminate();
 		return 1;
 	}
@@ -59,9 +59,10 @@ int Window::Initialise()
 
 	glewExperimental = GL_TRUE;
 
-	if (glewInit() != GLEW_OK)
+	GLenum error = glewInit();
+	if (error != GLEW_OK)
 	{
-		printf("GLEW initialization failed!");
+		printf("Error: %s", glewGetErrorString(error));
 		glfwDestroyWindow(mainWindow);
 		glfwTerminate();
 		return 1;
