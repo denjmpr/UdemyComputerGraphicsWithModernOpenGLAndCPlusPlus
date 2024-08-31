@@ -14,7 +14,7 @@ public:
 		GLfloat red, GLfloat green, GLfloat blue, 
 		GLfloat aIntensity, GLfloat dIntensity);
 
-	ShadowMap* GetShadowMap() { return shadowMap; }
+	ShadowMap* getShadowMap() { return shadowMap; }
 
 	~Light();
 
